@@ -10,35 +10,26 @@ namespace BusinessLogic.DI
 {
     public class BusinessLogicAutofacModule : Module
     {
-        private readonly string _productServiceUrl;
-
-        public InventoryBLLAutofacModule(string productServiceUrl)
-        {
-            _productServiceUrl = productServiceUrl
-                ?? throw new ArgumentNullException(nameof(productServiceUrl));
-        }
-
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<body>()
-                .As<IInventoryHeadService>()
+            builder.RegisterType<BodyService>()
+                .As<IBodyService>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<InventoryBodyService>()
-                .As<IInventoryBodyService>()
+            builder.RegisterType<DataService>()
+                .As<IDataService>()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<InventoryDateService>()
-                .As<IInventoryDateService>()
+            builder.RegisterType<IHeadService>()
+                .As<IHeadService>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryResultService>()
-                .As<IInventoryResultService>()
+
+            builder.RegisterType<ResultService>()
+                .As<IResultService>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventorySpaceService>()
-                .As<IInventorySpaceService>()
-                .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryDateToSpaceMapService>()
-                .As<IInventoryDateToSpaceMapService>()
+
+            builder.RegisterType<WarehouseService>()
+                .As<IWarehouseService>()
                 .InstancePerLifetimeScope();
 
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();

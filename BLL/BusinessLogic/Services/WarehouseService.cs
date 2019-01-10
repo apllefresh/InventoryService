@@ -6,7 +6,15 @@ using BLI = BusinessLogic.Contract.Interfaces;
 
 namespace BusinessLogic.Services
 {
-    class WarehouseService
+    public class WarehouseService : BusinessLogicService<BL.Warehouse, DA.Warehouse>, BLI.IWarehouseService
     {
+        protected IWarehouseRepository _repository;
+        private IMapper _mapper;
+
+        public WarehouseService(IWarehouseRepository repository, IMapper mapper) : base(repository, mapper)
+        {
+            _repository = repository;
+            _mapper = mapper;
+        }
     }
 }

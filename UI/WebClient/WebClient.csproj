@@ -15,6 +15,14 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.1916590" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BLL\BusinessLogic.Contract\BusinessLogic.Contract.csproj" />
+    <ProjectReference Include="..\..\BLL\BusinessLogic.DI\BusinessLogic.DI.csproj" />
+    <ProjectReference Include="..\..\DAL\DataAccess.Contract\DataAccess.Contract.csproj" />
+    <ProjectReference Include="..\..\DAL\DataAccess.DI\DataAccess.DI.csproj" />
   </ItemGroup>
 
 </Project>

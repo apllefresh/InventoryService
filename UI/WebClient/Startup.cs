@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using BusinessLogic.DI;
+using DataAccess.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,9 +27,19 @@ namespace WebClient
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var builder = new ContainerBuilder();
+
+            var inventoryConnectionString = Configuration.GetValue<string>("ConnectionStrings:InventoryConnection");
+            
+            builder.RegisterModule(new DataAccessAutofacModule(inventoryConnectionString));
+            builder.RegisterModule<BusinessLogicAutofacModule>();
+
+            builder.Populate(services);
+            var container = builder.Build();
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,9 +53,17 @@ namespace WebClient
             {
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseMvc();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
+
         }
     }
 }

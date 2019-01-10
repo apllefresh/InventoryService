@@ -8,5 +8,13 @@ namespace BusinessLogic.Services
 {
     public class DataService : BusinessLogicService<BL.Data, DA.Data>, BLI.IDataService
     {
+        protected IDataRepository _repository;
+        private IMapper _mapper;
+
+        public DataService(IDataRepository repository, IMapper mapper) : base(repository, mapper)
+        {
+            _repository = repository;
+            _mapper = mapper;
+        }
     }
 }
