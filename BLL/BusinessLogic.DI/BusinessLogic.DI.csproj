@@ -10,4 +10,10 @@
     <PackageReference Include="AutoMapper" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\DAL\DataAccess.Contract\DataAccess.Contract.csproj" />
+    <ProjectReference Include="..\BusinessLogic.Contract\BusinessLogic.Contract.csproj" />
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>
