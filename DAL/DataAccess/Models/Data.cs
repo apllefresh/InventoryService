@@ -1,15 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataAccess.Contract.Models
+namespace DataAccess.Models
 {
-    [Table(name: "inventorydate")]
-    public class InventoryDate
+    [Table(name: "inv_Date")]
+    public class Data
     {
-        [Column(name: "id")]
+        [Column(name: "Id")]
         public int Id { get; set; }
 
-        [Column(name: "date")]
+        [Column(name: "Date")]
         public DateTime Date { get; set; }
     }
 }

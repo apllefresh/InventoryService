@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DataAccess.Contract.Models;
 using Microsoft.Extensions.Configuration;
-using Npgsql;
+
 
 namespace DataAccess.EF
 {
@@ -14,18 +14,15 @@ namespace DataAccess.EF
             _connectionString = connectionString;
         }
 
-        public DbSet<InventoryDate> InventoryDates { get; set; }
-        public DbSet<InventoryHead> InventoryHeads { get; set; }
-        public DbSet<InventoryBody> InventoryBody { get; set; }
-        public DbSet<InventoryResult> InventoryResult { get; set; }
-        public DbSet<InventorySpace> InventorySpace { get; set; }
-        public DbSet<InventoryDateToSpaceMap> InventoryDateToSpaceMap { get; set; }
-
+        public DbSet<Body> bodies { get; set; }
+        public DbSet<Data> datas { get; set; }
+        public DbSet<Head> heads { get; set; }
+        public DbSet<Result> results { get; set; }
+        public DbSet<Warehouse> warehouses{ get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connection = new NpgsqlConnection(_connectionString);
-            optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            optionsBuilder.UseNpgsql(connection);
+            optionsBuilder.UseSqlServer(_connectionString);
         }
     }
 }

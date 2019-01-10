@@ -19,24 +19,26 @@ namespace DataAccess.DI
         }
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<InventoryBodyRepository>()
-                .As<IInventoryBodyRepository>()
+            builder.RegisterType<BodyRepository>()
+                .As<IBodyRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryDateRepository>()
-                .As<IInventoryDateRepository>()
+
+            builder.RegisterType<DataRepository>()
+                .As<IDataRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryHeadRepository>()
-                .As<IInventoryHeadRepository>()
+
+            builder.RegisterType<HeadRepository>()
+                .As<IHeadRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryResultRepository>()
-                .As<IInventoryResultRepository>()
+
+            builder.RegisterType<ResultRepository>()
+                .As<IResultRepository>()
                 .InstancePerLifetimeScope();
-            builder.RegisterType<InventorySpaceRepository>()
-                 .As<IInventorySpaceRepository>()
+
+            builder.RegisterType<WarehouseRepository>()
+                 .As<IWarehouseRepository>()
                  .InstancePerLifetimeScope();
-            builder.RegisterType<InventoryDateToSpaceMapRepository>()
-                .As<IInventoryDateToSpaceMapRepository>()
-                .InstancePerLifetimeScope();
+            
 
             builder.Register(context => new DataAccessContext
             (

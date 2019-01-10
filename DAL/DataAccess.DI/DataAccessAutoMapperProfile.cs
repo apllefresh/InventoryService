@@ -8,17 +8,15 @@ namespace DAL.DI
     {
         public DataAccessAutoMapperProfile()
         {
-            CreateMap<BaseModels.InventoryDate, ContractModels.InventoryDate>()
+            CreateMap<BaseModels.Body, ContractModels.Body>()
                     .ReverseMap();
-            CreateMap<BaseModels.InventoryHead, ContractModels.InventoryHead>()
+            CreateMap<BaseModels.Data, ContractModels.Data>()
                     .ReverseMap();
-            CreateMap<BaseModels.InventoryBody, ContractModels.InventoryBody>()
+            CreateMap<BaseModels.Head, ContractModels.Head>()
                     .ReverseMap();
-            CreateMap<BaseModels.InventoryResult, ContractModels.InventoryResult>()
+            CreateMap<BaseModels.Result, ContractModels.Result>()
                     .ReverseMap();
-            CreateMap<BaseModels.InventorySpace, ContractModels.InventorySpace>()
-                    .ReverseMap();
-            CreateMap<BaseModels.InventoryDateToSpaceMap, ContractModels.InventoryDateToSpaceMap>()
+            CreateMap<BaseModels.Warehouse, ContractModels.Warehouse>()
                     .ReverseMap();
         }
     }

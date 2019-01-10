@@ -2,7 +2,7 @@
 
 namespace DataAccess.Contract.Interfaces
 {
-    public interface IInventorySpaceRepository : IDataAccessRepository<InventorySpace>
+    public interface IHeadRepository : IDataAccessRepository<Head>
     {
     }
 }
